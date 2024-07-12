@@ -5,6 +5,7 @@ bp = Blueprint('bp',__name__,url_prefix="/")
 
 @bp.context_processor
 def processor():
+
 	if session.get("id"):
 		user = User.query.filter_by(id=int(session.get("id"))).first()
 		return {"user":user}

@@ -1,5 +1,8 @@
-SQLALCHEMY_DATABASE_URI = "sqlite:///flask.db"
 SECRET_KEY = "acbf63b9fef3065daa42b884a1833823"
-
+TESTING = True
+if TESTING == True:
+    SQLALCHEMY_DATABASE_URI = "sqlite:///test.db"
+else:
+    SQLALCHEMY_DATABASE_URI = "sqlite:///flask.db"
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"

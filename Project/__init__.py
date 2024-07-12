@@ -10,6 +10,8 @@ def create_app():
 	
 	app.register_blueprint(views.bp)
 	app.register_blueprint(auth.at)
+
+	
 	
 	db.init_app(app)
 	

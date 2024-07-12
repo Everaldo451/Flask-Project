@@ -1,4 +1,4 @@
-from flask import Blueprint, make_response, session, redirect, url_for, request, flash
+from flask import Blueprint, session, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..models.models import db, User
 from smtplib import SMTP
@@ -10,12 +10,8 @@ at = Blueprint("auth",__name__,url_prefix="/auth")
 
 @at.before_request
 def before():
-	if session.get("id"):
+	if session.get("id") and request.endpoint != "auth.logout":
 		return redirect(url_for('bp.home'))
-		
-	return None
-	
-	
 	
 	
 	
@@ -24,19 +20,11 @@ def before():
 @at.route("/login",methods=["POST"])
 def login():
 	
-	print(request.form)
-	
 	if request.form:
-		
-		print(request.form)
-		
-		users = User.query.all()
-		db.session.delete(users[1])
-		db.session.commit()
 		
 		user = User.query.filter_by(email=request.form.get("email")).first()
 		
-		if user and check_password_hash(request.form.get("password"),user.password):
+		if user and check_password_hash(user.password,request.form.get("password")):
 			
 			session["id"] = user.id
 			
@@ -78,5 +66,21 @@ def register():
 		session["id"] = user.id
 	
 	
+	return redirect(url_for('bp.home'))
+
+
+
+
+
+@at.route("/logout",methods=["GET"])
+def logout():
+
+	if session.get("id"):
+
+		session.pop("id")
+		session.clear()
+
+		return redirect(url_for('bp.home'))
+
 	return redirect(url_for('bp.home'))
 	
