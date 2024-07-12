@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+main {padding: 20px;}
 
 body,html{
   padding:0;
@@ -24,7 +25,7 @@ header{
     & ul{
       background-color: darkblue;
       margin:0;
-      padding: 0;
+      padding: 0 20px;
       display: flex;
       list-style: none;
       
@@ -35,6 +36,10 @@ header{
           padding: 10px;
           color: whitesmoke;
           text-decoration: none;
+        }
+
+        & a:hover{
+          background-color: rgb(65, 65, 204);
         }
       }
       
@@ -50,7 +55,7 @@ header{
 }
 
 footer{
-  padding: 0 10px;
+  padding: 0 20px;
   display: flex;
   justify-content: end;
   background-color: darkblue;
@@ -59,48 +64,5 @@ footer{
   
   & h2 {
     font-size: 15px
-  }
-}
-
-
-fieldset{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  & legend{
-    text-align: center
-  }
-  
-  & div{
-    position: relative;
-    margin: 10px 0;
-  }
-  
-  & label{
-    position: absolute;
-    font-size:14px;
-    color:gray;
-    top: 50%;
-    left: 10px;
-    transform: translate(0,-50%);
-    transition: all 0.5s;
-  }
-  
-  & input{
-    padding:14px 10px;
-    border:1px solid black;
-    outline: none;
-    border-radius: none;
-  }
-  
-  & input:focus ~ label, input:not(:placeholder-shown) ~ label{
-    transform: translate(0,calc(-100% - 8px));
-    font-size:10px;
-  }
-  
-  & input[type="submit"]{
-    padding:10px;
-    background-color: lightblue;
   }
 }

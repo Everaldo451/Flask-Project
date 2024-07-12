@@ -3,9 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from ..models.models import db, User
 from smtplib import SMTP
 
-
 at = Blueprint("auth",__name__,url_prefix="/auth")
-
 
 
 @at.before_request
@@ -77,7 +75,6 @@ def logout():
 
 	if session.get("id"):
 
-		session.pop("id")
 		session.clear()
 
 		return redirect(url_for('bp.home'))

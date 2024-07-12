@@ -6,19 +6,21 @@
     <main>
       <h1>Flask App</h1>
       <p>
-       Olá{% if user %},  {{user.username}}{% endif %}.
+       Olá{% if user %},  <strong>{{user.username}}</strong>{% endif %}.
         Bem vindo a esse site construído em Flask. Aqui, você
         poderá ver uma implementação de um banco de dados local
-        com uso do SQLAlchemy{% if user %} e, como você já viu,
+        com uso do <strong>SQLAlchemy</strong>{% if user %} e, como você já viu,
         {% else %}, além de
         {% endif %}
          autenticação por sessão.
       </p>
       <p>Nas configurações de Sessão, como é possível ver em settings.py, na instância,
-        o cookie é HttpOnly e apresenta samesite igual a Lax, pensando na questão da segurança
-      </p>
-      <p>O projeto, no geral, também explora outras tecnologias do Flask, como blueprints,
-        flash messages e password hashs. 
+        o cookie é <strong>HttpOnly</strong> e apresenta samesite igual a <strong>Lax</strong>, pensando 
+        na questão da segurança.
+        O projeto, no geral, também explora outras tecnologias do Flask, como <strong>blueprints,
+        flash messages e password hashs.</strong>
       </p>
     </main>
 {% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{{url_for('static',filename='home.css')}}"/>{% endblock %}

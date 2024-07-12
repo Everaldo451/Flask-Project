@@ -11,7 +11,11 @@ def create_app():
 	app.register_blueprint(views.bp)
 	app.register_blueprint(auth.at)
 
-	
+	@app.after_request
+	def after(response):
+		response.headers["Content-Security-Policy"] = "default-src 'self';font-src *"
+		response.headers["X-Frame-Options"] = "SAMEORIGIN"
+		return response
 	
 	db.init_app(app)
 	

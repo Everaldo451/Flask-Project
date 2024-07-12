@@ -8,12 +8,12 @@
         <fieldset>
           <legend>Login</legend>
           <div>
-            <input type="text" name="email" id="email" placeholder=""/>
-            <label for="email">Email</label>
+            <input type="text" name="email" id="lemail" placeholder="" required autocomplete="off" pattern=".+@.+\..+"/>
+            <label for="lemail">Email</label>
           </div>
           <div>
-            <input type="password" name="password" id="password" placeholder=""/>
-            <label for="password">Senha</label>
+            <input type="password" name="password" id="lpassword" placeholder="" required autocomplete="off"/>
+            <label for="lpassword">Senha</label>
           </div>
           {% with login_m = get_flashed_messages(category_filter=["login_error"]) %}
               {% if login_m %}
@@ -29,16 +29,16 @@
         <fieldset>
           <legend>Registro</legend>
           <div>
-            <input type="text" name="username" id="username" placeholder=""/>
+            <input type="text" name="username" id="username" placeholder="" required autocomplete="off" minlength="5"/>
             <label for="username">Username</label>
           </div>
           <div>
-            <input type"text" name="email" id="email" placeholder=""/>
-            <label for="email">Email</label>
+            <input type"text" name="email" id="remail" placeholder="" required autocomplete="off" pattern=".+@.+\..+"/>
+            <label for="remail">Email</label>
           </div>
           <div>
-            <input type="password" name="password" id="password" placeholder=""/>
-            <label for="password">Senha</label>
+            <input type="password" name="password" id="rpassword" placeholder="" required autocomplete="off" minlength="8"/>
+            <label for="rpassword">Senha</label>
           </div>
           {% with regis_m = get_flashed_messages(category_filter=["register_error"]) %}
               {% if regis_m %}
@@ -52,3 +52,5 @@
       </form>
     </main>
 {% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{{url_for('static',filename='login.css')}}"/>{% endblock %}
