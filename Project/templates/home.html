@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+    <main>
+      <h1>A flask App</h1>
+      <p>
+       Hello{% if user %},  {{user.username}}{% endif %}.
+        Bem vindo a esse site construído em Flask. Aqui, você
+        poderá ver uma implementação de um banco de dados local
+        com uso do SQLAlchemy
+        {% if user %} e, como você já viu,
+        {% else %}
+        , além de
+        {% endif %}
+         autenticação por sessão.
+      </p>
+    </main>
+{% endblock %}
